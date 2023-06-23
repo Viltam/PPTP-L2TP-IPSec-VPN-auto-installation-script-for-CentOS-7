@@ -15,10 +15,10 @@ if [[ $(id -u) != "0" ]]; then
 fi
 
 #检测是否是CentOS 7或者RHEL 7
-if [[ $(grep "release 7." /etc/redhat-release 2>/dev/null | wc -l) -eq 0 ]]; then
-    printf "\e[42m\e[31mError: Your OS is NOT CentOS 7 or RHEL 7.\e[0m\n"
-    printf "\e[42m\e[31mThis install script is ONLY for CentOS 7 and RHEL 7.\e[0m\n"
-    exit 1
+#if [[ $(grep "release 7." /etc/redhat-release 2>/dev/null | wc -l) -eq 0 ]]; then
+#    printf "\e[42m\e[31mError: Your OS is NOT CentOS 7 or RHEL 7.\e[0m\n"
+#    printf "\e[42m\e[31mThis install script is ONLY for CentOS 7 and RHEL 7.\e[0m\n"
+#    exit 1
 fi
 clear
 
@@ -139,13 +139,13 @@ clear
 mknod /dev/random c 1 9
 
 #更新组件
-yum update -y
+sudo apt-get update -y
 
 #安装epel源
-yum install epel-release -y
+sudo apt-get install epel-release -y
 
 #安装依赖的组件
-yum install -y openswan ppp pptpd xl2tpd wget
+sudo apt-get install -y openswan ppp pptpd xl2tpd wget
 
 #创建ipsec.conf配置文件
 rm -f /etc/ipsec.conf
